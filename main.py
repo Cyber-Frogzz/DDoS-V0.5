@@ -5,9 +5,12 @@ def menu():
     print('''
 Welcome To Tools Frogzz
 
-[My Tiktok  : your_tiktok]
+[My Tiktok  : Frogzz]
 [My Github  : https://github.com/Cyber-Frogzz/DDoS-V0.5]
-[My YouTube : your_youtube]
+[My YouTube : frogzzsamp-88]
+
+===============================================
+                 Pilihan Menu
 
 [1] DDoS V0.5
 ''')
