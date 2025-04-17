@@ -24,8 +24,10 @@ def menu():
 
     if pilihan == '1':
         ip = input("IP Target (contoh: http://1.2.3.4): ")
-        jumlah = input("Jumlah Packet: ")
-        os.system(f'python DDoS-V0.5.py {ip} {jumlah}')
+        
+        # Menjalankan DDoS dengan 50.000 request
+        os.system(f'python DDoS-V0.5.py {ip}')
+        
         input("Tekan Enter untuk kembali ke menu...")
         menu()
 
