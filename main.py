@@ -26,7 +26,7 @@ def menu():
         ip = input("IP Target (contoh: http://1.2.3.4): ")
         
         # Menjalankan DDoS dengan 50.000 request
-        os.system(f'python DDoS-V0.5.py {ip}')
+        os.system(f'python DDoS_V0.5.py {ip}')
         
         input("Tekan Enter untuk kembali ke menu...")
         menu()
