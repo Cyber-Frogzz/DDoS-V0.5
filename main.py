@@ -7,7 +7,10 @@ def menu():
 
 ===============================================
 
-[My Tiktok  : Frogzz]
+
+[Author     : Frogzz          ]
+[Community  : 𝙋𝙝𝙖𝙣𝙩𝙤𝙢𝙂𝙪𝙖𝙧𝙙𓆃 ]
+[My Tiktok  : Frogzz          ]
 [My Github  : https://github.com/PhantomGuard-Frogzz/DDoS-V0.5]
 [My YouTube : frogzzsamp-88]
 
