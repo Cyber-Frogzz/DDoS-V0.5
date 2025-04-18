@@ -8,7 +8,7 @@ def menu():
 ===============================================
 
 [My Tiktok  : Frogzz]
-[My Github  : https://github.com/Cyber-Frogzz/DDoS-V0.5]
+[My Github  : https://github.com/PhantomGuard-Frogzz/DDoS-V0.5]
 [My YouTube : frogzzsamp-88]
 
                   ⚠️WARNING⚠️
