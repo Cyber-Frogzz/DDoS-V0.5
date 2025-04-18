@@ -8,7 +8,7 @@ Do Not Use This Tool To Commit Crime, Because There Are Rules, If You Commit Cri
 
 [!] install python git -y pip install requests 
 
-[!] git clone https://github.com/Cyber-Frogzz/DDoS-V0.5 
+[!] git clone https://github.com/PhantomGuard-Frogzz/DDoS-V0.5 
 
 [!] cd DDoS-V0.5 
 
