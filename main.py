@@ -3,10 +3,17 @@ import os
 def menu():
     os.system('clear')
     print('''
-        Welcome To Tools PhantomGuard Frogzz
+     Welcome To Tools PhantomGuard Frogzz
+
+[Author : Frogzz            ]
+[Community : 𝙋𝙝𝙖𝙣𝙩𝙤𝙢𝙂𝙪𝙖𝙧𝙙𓆃 ]
+
 
 ===============================================
-[1] Simulasi Traffic (700 request/10 detik)
+                Pilihan Menu
+
+[1] DDoS Free Proxy
+
 ===============================================
     ''')
     pilihan = input("Pilih menu: ")
@@ -14,5 +21,5 @@ def menu():
         ip = input("Target (contoh: http://1.2.3.4): ")
         os.system(f'python DDoS-V0.5.py {ip}')
         input("Selesai! Tekan Enter untuk keluar.")
-
+ ]
 menu()
