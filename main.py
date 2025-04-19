@@ -1,4 +1,4 @@
-from DDoS_V0.5 import start_attack
+from DDoS_V0.5.py import start_attack
 import re
 
 def validate_url(url):
