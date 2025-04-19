@@ -1,25 +1,23 @@
-import os
+from DDoS_V0_5 import start_attack
 
-def menu():
-    os.system('clear')
-    print('''
-     Welcome To Tools PhantomGuard Frogzz
+def main():
+    print("Welcome to Tool Frogzz")
+    print("------------------------")
+    print("Pilih opsi:")
+    print("[1] DDoS")
+    print("[2] Keluar")
+    
+    pilihan = input("Masukkan pilihan: ")
+    
+    if pilihan == "1":
+        target = input( Masukkan IP target (contoh: 123.45.67.89): ")
+        threads = int(input("Masukkan jumlah thread: "))
+        duration = int(input("Masukkan durasi serangan dalam detik: "))
+        start_attack(target, threads, duration)
+    elif pilihan == "2":
+        print("Keluar dari tool.")
+    else:
+        print("Pilihan tidak valid.")
 
-[Author : Frogzz            ]
-[Community : 𝙋𝙝𝙖𝙣𝙩𝙤𝙢𝙂𝙪𝙖𝙧𝙙𓆃 ]
-
-
-===============================================
-                Pilihan Menu
-
-[1] DDoS Free Proxy
-
-===============================================
-    ''')
-    pilihan = input("Pilih menu: ")
-    if pilihan == '1':
-        ip = input("Target (contoh: http://1.2.3.4): ")
-        os.system(f'python DDoS_V0.5.py {ip}')
-        input("Selesai! Tekan Enter untuk keluar.")
- 
-menu()
+if __name__ == "__main__":
+    main()
