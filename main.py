@@ -19,7 +19,7 @@ def menu():
     pilihan = input("Pilih menu: ")
     if pilihan == '1':
         ip = input("Target (contoh: http://1.2.3.4): ")
-        os.system(f'python DDoS-V0.5.py {ip}')
+        os.system(f'python DDoS_V0.5.py {ip}')
         input("Selesai! Tekan Enter untuk keluar.")
  
 menu()
