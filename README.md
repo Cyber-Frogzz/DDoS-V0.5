@@ -6,7 +6,9 @@ Do Not Use This Tool To Commit Crime, Because There Are Rules, If You Commit Cri
 
 [!] pkg update && pkg upgrade pkg 
 
-[!] install python git -y pip install requests 
+[!] pkg install git
+
+[!] pkg install python 
 
 [!] git clone https://github.com/PhantomGuard-Frogzz/DDoS-V0.5 
 
