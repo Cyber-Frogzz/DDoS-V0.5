@@ -21,5 +21,5 @@ def menu():
         ip = input("Target (contoh: http://1.2.3.4): ")
         os.system(f'python DDoS-V0.5.py {ip}')
         input("Selesai! Tekan Enter untuk keluar.")
- ]
+ 
 menu()
