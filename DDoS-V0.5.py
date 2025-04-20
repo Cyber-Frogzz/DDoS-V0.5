@@ -40,5 +40,5 @@ def run_attack(target, threads=75, duration=10):
     print("\nSelesai mengirim serangan.")
 
 if __name__ == "__main__":
-    target = input("Masukkan IP/URL target (contoh: http://123.45.67.89): ")
+    target = input("Masukkan IP/URL target (contoh: 123.45.67.89): ")
     run_attack(target)
