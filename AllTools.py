@@ -50,7 +50,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "track":
         ip_tracker()
     else:
-        target = input("Masukkan URL/IP Target (contoh: http://123.45.67.89): ")
+        target = input("Masukkan URL/IP Target (contoh: 123.45.67.89): ")
         if "127.0.0.1" in target or "localhost" in target:
             print("Error: Jangan gunakan localhost/IP sendiri.")
         else:
