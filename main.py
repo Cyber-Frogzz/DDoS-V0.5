@@ -13,7 +13,7 @@ def banner():
 """)
 
 def menu():
-    print("[1] DDoS Website")
+    print("[1] DDoS 75T")
 
 def run():
     banner()
