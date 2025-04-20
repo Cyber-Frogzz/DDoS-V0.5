@@ -3,13 +3,13 @@ import os
 def banner():
     print("""
 
-=============================
-|     Welcome To Frogzz     |
-|   Tool By PhantomGuard    |
-|===========================|
-|  TikTok: @cyberfrogzz     |
+       =============================
+       |         Welcome To        |
+       |      Tools By Frogzz      |
+|=========================================|
+|  TikTok: @phantomguardfrogzz            |
 |  GitHub: github.com/PhantomGuard-Frogzz |
-=============================
+===========================================
 """)
 
 def menu():
