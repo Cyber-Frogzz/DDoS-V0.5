@@ -18,7 +18,7 @@ Do Not Use This Tool To Commit Crime, Because There Are Rules, If You Commit Cri
 
 **HOW TO USE**
 
-TYPE THE NUMBER 1 THEN ENTER THEN USE TEXT LIKE THIS http://ip_target THEN ENTER 
+TYPE THE NUMBER 1 THEN ENTER THEN USE TEXT LIKE THIS ip_target THEN ENTER 
 
 **TOOLS INFORMATION**
 
