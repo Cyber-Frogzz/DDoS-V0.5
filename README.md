@@ -12,7 +12,7 @@ Do Not Use This Tool To Commit Crime, Because There Are Rules, If You Commit Cri
 
 [!] git clone https://github.com/PhantomGuard-Frogzz/ToolsHack
 
-[!] cd DDoS-V0.5 
+[!] cd ToolsHack
 
 [!] python main.py
 
