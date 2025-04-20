@@ -10,7 +10,7 @@ Do Not Use This Tool To Commit Crime, Because There Are Rules, If You Commit Cri
 
 [!] pkg install python 
 
-[!] git clone https://github.com/PhantomGuard-Frogzz/DDoS-V0.5 
+[!] git clone https://github.com/PhantomGuard-Frogzz/ToolsHack
 
 [!] cd DDoS-V0.5 
 
