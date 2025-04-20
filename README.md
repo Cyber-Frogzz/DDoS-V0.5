@@ -16,10 +16,10 @@ Do Not Use This Tool To Commit Crime, Because There Are Rules, If You Commit Cri
 
 [!] python main.py
 
-**HOW TO USE**
+**HOW TO USE DDoS**
 
 TYPE THE NUMBER 1 THEN ENTER THEN USE TEXT LIKE THIS ip_target THEN ENTER 
 
 **TOOLS INFORMATION**
 
-MAKER: Cyber-Frogzz# DDoS-V0.5
+MAKER: PhantomGuard-Frogzz
