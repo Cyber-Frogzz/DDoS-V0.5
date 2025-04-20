@@ -18,9 +18,9 @@ def menu():
     choice = input("\nPilih menu: ")
 
     if choice == "1":
-        os.system("python DDoS-V0.5.py")
+        os.system("python AllTools.py")
     elif choice == "2":
-        os.system("python DDoS-V0.5.py track")
+        os.system("python AllTools.py track")
     else:
         print("Pilihan tidak valid!")
 
