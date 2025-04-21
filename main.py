@@ -23,7 +23,7 @@ def menu():
     elif choice == "2":
         os.system("python AllTools.py track")
     elif choice == "3":
-        os.system("python Check-Server.py")
+        os.system("python check-server.py")
     else:
         print("Pilihan tidak valid!")
 
