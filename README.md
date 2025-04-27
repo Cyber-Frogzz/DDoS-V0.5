@@ -10,6 +10,8 @@ Do Not Use This Tool To Commit Crime, Because There Are Rules, If You Commit Cri
 
 [!] pkg install python 
 
+[!] pip install requests
+
 [!] git clone https://github.com/PhantomGuard-Frogzz/ToolsHack
 
 [!] cd ToolsHack
