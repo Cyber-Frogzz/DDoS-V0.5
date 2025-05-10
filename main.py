@@ -29,7 +29,7 @@ def menu():
     elif choice == "4":
         os.system("python fngstp.py menu")
     elif choice == "5":
-        os.system("python dos7lyrs.py start_attack")
+        os.system("python dos7lyrs.py menu")
     else:
         print("Pilihan tidak valid!")
 
