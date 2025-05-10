@@ -7,13 +7,13 @@ def generate_otp():
 def kirim_otp(nomor):
     otp = generate_otp()
     print(f"[+] OTP Terkirim ke {nomor}: {otp}")
-    # Di sini bisa ditambahkan pengiriman via API resmi
+    
 
 def main():
     print("=== Sistem Kirim OTP Via SMS===")
     nomor = input("Masukkan Nomor Target: ")
     max_kirim = 30
-    delay_per_kirim = 1  # detik
+    delay_per_kirim = 1
 
     for i in range(max_kirim):
         kirim_otp(nomor)
