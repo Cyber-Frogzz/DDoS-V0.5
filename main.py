@@ -29,7 +29,7 @@ def menu():
     elif choice == "4":
         os.system("python fngstp.py menu")
     elif choice == "5":
-        os.system("python dos7lyrs.py menu")
+        os.system("python dos7lyrs.py main")
     else:
         print("Pilihan tidak valid!")
 
