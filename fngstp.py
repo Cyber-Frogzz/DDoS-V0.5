@@ -2,7 +2,7 @@ import time
 import random
 
 def generate_otp():
-    return random.randint(KONTOL)
+    return random.randint(11111, 999999)
 
 def kirim_otp(nomor):
     otp = generate_otp()
