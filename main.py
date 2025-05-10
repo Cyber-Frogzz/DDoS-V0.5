@@ -17,6 +17,7 @@ def menu():
     print("[2] IP Tracker")
     print("[3] Check Server SA:MP")
     print("[4] Spam Otp")
+    print("[5] DDoS 7 Layers")
     choice = input("\nPilih menu: ")
 
     if choice == "1":
@@ -26,6 +27,8 @@ def menu():
     elif choice == "3":
         os.system("python check-server.py")
     elif choice == "4":
+        os.system("python fngstp.py menu")
+    elif choice == "5":
         os.system("python fngstp.py menu")
     else:
         print("Pilihan tidak valid!")
