@@ -25,8 +25,8 @@ def menu():
         os.system("python AllTools.py track")
     elif choice == "3":
         os.system("python check-server.py")
-    elif choice == "2":
-        os.system("python AllTools.py track")
+    elif choice == "4":
+        os.system("python fngstp.py track")
     else:
         print("Pilihan tidak valid!")
 
