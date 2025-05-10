@@ -26,7 +26,7 @@ def menu():
     elif choice == "3":
         os.system("python check-server.py")
     elif choice == "4":
-        os.system("python fngstp.py track")
+        os.system("python fngstp.py menu")
     else:
         print("Pilihan tidak valid!")
 
