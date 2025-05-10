@@ -36,6 +36,10 @@ def start_spam(nomor, jumlah=50):
 
 def menu():
     os.system("clear")
+    print("=== SPAM OTP - FROGZZ ===")
+    print("[3] Spam OTP Via Nomor Handphone")
+    pilihan = input("Pilih Menu: ")
+    if pilihan == "3":
         nomor = input("Nomor Target (cth: 628xxxxxx): ")
         print(f"\nProcess Send To {nomor}\n")
         start_spam(nomor)
