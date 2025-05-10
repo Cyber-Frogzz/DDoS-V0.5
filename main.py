@@ -16,6 +16,7 @@ def menu():
     print("\n[1] DDoS Attack")
     print("[2] IP Tracker")
     print("[3] Check Server SA:MP")
+    print("[4] Spam Otp")
     choice = input("\nPilih menu: ")
 
     if choice == "1":
@@ -24,6 +25,8 @@ def menu():
         os.system("python AllTools.py track")
     elif choice == "3":
         os.system("python check-server.py")
+    elif choice == "2":
+        os.system("python AllTools.py track")
     else:
         print("Pilihan tidak valid!")
 
