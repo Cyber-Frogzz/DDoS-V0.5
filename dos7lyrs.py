@@ -38,7 +38,7 @@ def http_attack(url, duration, thread_id):
             continue
 
 def get_target_info(url):
-    host = url.split("//")[1].split("/")[0]
+    host = url.split("://")[1].split(":/")[0]
     ip = socket.gethostbyname(host)
     try:
         isp = requests.get(f"http://ip-api.com/json/{ip}", timeout=5).json().get("isp", "Unknown")
