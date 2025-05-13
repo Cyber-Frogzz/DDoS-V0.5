@@ -2,7 +2,6 @@ import requests, threading, time, random
 from colorama import Fore, init
 init()
 
-
 try:
     import os
     os.system("clear")
@@ -14,10 +13,10 @@ print(Fore.RED + "║         F R O G Z Z  -  T 0 0 L S     ║")
 print(Fore.RED + "╚══════════════════════════════════════╝\n")
 
 tgt = input(Fore.YELLOW + "Target (ex: http://example.com) >> ")
-thedz = int(input("Theders [MAX 2] >> "))
+thedz = int(input("Theders >> "))
 
-if thedz > 2:
-    thedz = 2
+if thedz > 5000:
+    thedz = 5000
 
 try:
     with open("proxy.txt", "r") as f:
