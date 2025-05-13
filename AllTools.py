@@ -19,7 +19,7 @@ if thedz > 5000:
     thedz = 5000
 
 try:
-    with open("proxy.txt", "r") as f:
+    with open("proxies.txt", "r") as f:
         pxlist = f.read().splitlines()
 except:
     print(Fore.RED + "[!] proxy.txt not found!")
