@@ -13,7 +13,7 @@ def banner():
     """)
 
 def menu():
-    print("\n[1] DDoS Attack")
+    print("\n[1] DDoS Http")
     print("[2] IP Tracker")
     print("[3] Check Server SA:MP")
     print("[4] Spam Otp")
@@ -21,7 +21,7 @@ def menu():
     choice = input("\nPilih menu: ")
 
     if choice == "1":
-        os.system("python AllTools.py")
+        os.system("python AllTools.py frogzz")
     elif choice == "2":
         os.system("python AllTools.py track")
     elif choice == "3":
