@@ -21,7 +21,7 @@ def menu():
     choice = input("\nPilih menu: ")
 
     if choice == "1":
-        os.system("python AllTools.py frogzz")
+        os.system("python AllTools.py")
     elif choice == "2":
         os.system("python AllTools.py track")
     elif choice == "3":
