@@ -3,7 +3,6 @@ from colorama import Fore, init
 init()
 
 
-def frogzz():
 try:
     import os
     os.system("clear")
